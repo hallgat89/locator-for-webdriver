@@ -10,9 +10,9 @@ import java.util.List;
  */
 public class Locator implements WebElement {
 
-    WebDriver driver;
-    By by;
-    WebElement element = null;
+    private final WebDriver driver;
+    private final By by;
+    private WebElement element = null;
 
     public Locator(WebDriver driver, By by) {
         this.driver = driver;
