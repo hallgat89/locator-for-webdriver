@@ -25,3 +25,4 @@ acceptButton2.isDisplayed(); // WebElement created the first time
 driver.navigate().refresh(); // WebElement becomes stale
 acceptButton2.isDisplayed(); // Ok, WebElement is re-fetched
 ```
+The Locator creates the encapsulated WebElement lazily, and re-creates it if it is stale to avoid StaleElementReferenceException. As a result you can store each element in page object fields instead of creating them inside methods.
