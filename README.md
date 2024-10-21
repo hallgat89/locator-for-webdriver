@@ -15,7 +15,13 @@ By button = By.xpath("//div[text()=\"Click me"]//ancestor::button");
 
 // With WebElement
 WebElement acceptButton1 = driver.findElement(acceptButtonLocator);
+acceptButton1.isDisplayed();
+driver.navigate().refresh(); // WebElement becomes stale
+acceptButton1.isDisplayed(); // Throws StaleElement
 
 // With Locator:
 Locator acceptButton2 = new Locator(driver, acceptButtonLocator);
+acceptButton2.isDisplayed(); // WebElement created the first time
+driver.navigate().refresh(); // WebElement becomes stale
+acceptButton2.isDisplayed(); // Ok, WebElement is re-fetched
 ```
