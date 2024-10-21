@@ -6,7 +6,7 @@ import org.openqa.selenium.*;
 import java.util.List;
 
 /**
- * Locator implementation for ${@link org.openqa.selenium.WebElement} to avoid {@link org.openqa.selenium.StaleElementReferenceException}.
+ * Locator implementation for ${@link org.openqa.selenium.WebElement} to enable lazy loading and avoid {@link org.openqa.selenium.StaleElementReferenceException}.
  */
 public class Locator implements WebElement {
 
@@ -19,7 +19,12 @@ public class Locator implements WebElement {
         this.by = by;
     }
 
-    private WebElement getElement() {
+    /**
+     * Returns the encapsulated {@link org.openqa.selenium.WebElement}. Use this method only, when you specifically need {@link org.openqa.selenium.WebElement}.
+     *
+     * @return {@link org.openqa.selenium.WebElement}
+     */
+    public WebElement getWebElement() {
         if (this.element == null) {
             this.element = driver.findElement(this.by);
             return this.element;
@@ -36,111 +41,111 @@ public class Locator implements WebElement {
 
     @Override
     public void click() {
-        this.getElement().click();
+        this.getWebElement().click();
     }
 
     @Override
     public void submit() {
-        this.getElement().submit();
+        this.getWebElement().submit();
     }
 
     @Override
     public void sendKeys(CharSequence... keysToSend) {
-        this.getElement().sendKeys(keysToSend);
+        this.getWebElement().sendKeys(keysToSend);
     }
 
     @Override
     public void clear() {
-        this.getElement().clear();
+        this.getWebElement().clear();
     }
 
     @Override
     public String getTagName() {
-        return this.getElement().getTagName();
+        return this.getWebElement().getTagName();
     }
 
     @Override
     public @Nullable String getDomProperty(String name) {
-        return this.getElement().getDomProperty(name);
+        return this.getWebElement().getDomProperty(name);
     }
 
     @Override
     public @Nullable String getDomAttribute(String name) {
-        return this.getElement().getDomAttribute(name);
+        return this.getWebElement().getDomAttribute(name);
     }
 
     @Override
     public @Nullable String getAttribute(String name) {
-        return this.getElement().getAttribute(name);
+        return this.getWebElement().getAttribute(name);
     }
 
     @Override
     public @Nullable String getAriaRole() {
-        return this.getElement().getAriaRole();
+        return this.getWebElement().getAriaRole();
     }
 
     @Override
     public @Nullable String getAccessibleName() {
-        return this.getElement().getAccessibleName();
+        return this.getWebElement().getAccessibleName();
     }
 
     @Override
     public boolean isSelected() {
-        return this.getElement().isSelected();
+        return this.getWebElement().isSelected();
     }
 
     @Override
     public boolean isEnabled() {
-        return this.getElement().isEnabled();
+        return this.getWebElement().isEnabled();
     }
 
     @Override
     public String getText() {
-        return this.getElement().getText();
+        return this.getWebElement().getText();
     }
 
     @Override
     public List<WebElement> findElements(By by) {
-        return this.getElement().findElements(by);
+        return this.getWebElement().findElements(by);
     }
 
     @Override
     public WebElement findElement(By by) {
-        return this.getElement().findElement(by);
+        return this.getWebElement().findElement(by);
     }
 
     @Override
     public SearchContext getShadowRoot() {
-        return this.getElement().getShadowRoot();
+        return this.getWebElement().getShadowRoot();
     }
 
     @Override
     public boolean isDisplayed() {
-        return this.getElement().isDisplayed();
+        return this.getWebElement().isDisplayed();
     }
 
     @Override
     public Point getLocation() {
-        return this.getElement().getLocation();
+        return this.getWebElement().getLocation();
     }
 
     @Override
     public Dimension getSize() {
-        return this.getElement().getSize();
+        return this.getWebElement().getSize();
     }
 
     @Override
     public Rectangle getRect() {
-        return this.getElement().getRect();
+        return this.getWebElement().getRect();
     }
 
     @Override
     public String getCssValue(String propertyName) {
-        return this.getElement().getCssValue(propertyName);
+        return this.getWebElement().getCssValue(propertyName);
     }
 
     @Override
     public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
-        return this.getElement().getScreenshotAs(target);
+        return this.getWebElement().getScreenshotAs(target);
     }
 }
